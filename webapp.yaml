@@ -70,5 +70,5 @@ spec:
               name: webapp-service
               port:
                 number: 3000
-          path: /
+          path: /webapp
           pathType: Prefix
