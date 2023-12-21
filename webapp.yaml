@@ -59,7 +59,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: azure/application-gateway
     # appgw.ingress.kubernetes.io/use-private-ip: "false"
-    appgw.ingress.kubernetes.io/backend-path-prefix: "/"
+    # appgw.ingress.kubernetes.io/backend-path-prefix: "/"
 spec:
   rules:
     - host:  falugtestaks.eastus2.cloudapp.azure.com
