@@ -62,7 +62,7 @@ metadata:
     appgw.ingress.kubernetes.io/backend-path-prefix: "/"
 spec:
   rules:
-    - host:  webapp-service.falugtestaks.eastus2.cloudapp.azure.com
+    - host:  falugtestaks.eastus2.cloudapp.azure.com
       http:
         paths:
         - backend:
