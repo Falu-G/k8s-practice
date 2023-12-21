@@ -42,11 +42,34 @@ kind: Service
 metadata:
   name: webapp-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: webapp
   ports:
-    - protocol: TCP
+    - name: 8080-8080
+      protocol: TCP
       port: 3000
       targetPort: 3000
       nodePort: 30100
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name:  webapp-service
+  namespace: madapi-preprod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        -  webapp-service.falugtestaks.eastus2.cloudapp.azure.com
+  rules:
+    - host:  webapp-service.falugtestaks.eastus2.cloudapp.azure.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: webapp-service
+              port:
+                number: 8081
+          path: /
+          pathType: Prefix
