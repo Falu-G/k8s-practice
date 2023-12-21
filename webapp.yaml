@@ -55,12 +55,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name:  webapp-service
-  namespace: madapi-preprod
+  namespace: preprod
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/use-private-ip: "false"
+    appgw.ingress.kubernetes.io/backend-path-prefix: "/"
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        -  webapp-service.falugtestaks.eastus2.cloudapp.azure.com
   rules:
     - host:  webapp-service.falugtestaks.eastus2.cloudapp.azure.com
       http:
