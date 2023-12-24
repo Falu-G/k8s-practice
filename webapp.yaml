@@ -42,7 +42,7 @@ kind: Service
 metadata:
   name: webapp-service
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: webapp
   ports:
@@ -62,7 +62,7 @@ metadata:
     # appgw.ingress.kubernetes.io/backend-path-prefix: "/"
 spec:
   rules:
-    - host:  webapp.falugtestaks.eastus2.cloudapp.azure.com
+    - host:  falugtestaks.eastus2.cloudapp.azure.com/web
       http:
         paths:
         - backend:
